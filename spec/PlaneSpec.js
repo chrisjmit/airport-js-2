@@ -3,11 +3,14 @@
 })();
 
 describe("Plane", function(){
+  var airport;
   var plane;
+  var weather;
 
   beforeEach(function(){
     airport = new Airport();
     plane = new Plane();
+    weather = new Weather();
   });
 
 it("finds that a plane exists", function(){
@@ -22,7 +25,7 @@ it("changes the plane status to no longer flying", function(){
 it("changes the plane status to flying", function() {
   plane.land();
   plane.takeoff();
-  expect(plane.isFlying).toBe(true);
+  expect(plane.isFlying).toEqual(true);
 });
 
 });

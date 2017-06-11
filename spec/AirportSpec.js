@@ -8,6 +8,7 @@ describe("Airport", function(){
   beforeEach(function(){
     airport = new Airport();
     plane = new Plane();
+    weather = new Weather();
   });
 
   it("exists", function (){
@@ -23,6 +24,12 @@ describe("Airport", function(){
     airport.clearForLanding(plane);
     airport.clearForTakeoff(plane);
     expect(airport._hangar).toEqual([]);
+  });
+
+  it("prevents a plane from taking off when the weather is stormy", function() {
+    airport.clearForLanding(plane);
+    weather.stormy();
+    expect(function(){airport.clearForTakeoff(plane);}).toThrowError("Take off cancelled. Weather is stormy.");
   });
 
 });
