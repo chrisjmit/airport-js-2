@@ -35,6 +35,18 @@ describe("Features:", function(){
       expect(airport._hangar).toContain(plane);
     });
 
+    it("landing when weather is stormy", function(){
+      weather.stormy();
+      expect(airport._hangar).not.toContain(plane);
+    });
+
+    it("landing when the airport is full", function(){
+      for (var i = 0; i < 11; i++){
+        airport.clearForLanding(plane);
+      }
+      expect(airport._hangar.length).toBe(10);
+    });
   });
+
 
 });

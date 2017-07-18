@@ -32,4 +32,12 @@ describe("Airport", function(){
     expect(function(){airport.clearForTakeoff(plane);}).toThrowError("Take off cancelled. Weather is stormy.");
   });
 
+  it("prevents a plane from landing when stormy", function() {
+    weather.stormy();
+    expect(function(){ airport.clearForLanding(plane);}).toThrowError("Landing is not possible due to stormy weather.");
+  });
+
+  it("prevents a plane from landing at a full airport", function() {
+    expect()
+  });
 });
